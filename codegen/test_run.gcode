@@ -1,6 +1,24 @@
-; Simple test weld for stack validation
-G0 X100.0 Y50.0 Z80.0
-G1 X100.0 Y50.0 Z5.0 F200
-G1 X300.0 Y100.0 Z5.0 F100
-G1 X200.0 Y50.0 Z5.0 F150
-G0 X200.0 Y50.0 Z80.0
+; UR10e weld path validation test
+; Units: mm
+; Feed rates: mm/min
+
+; Safe approach
+G0 X400.0 Y0.0 Z150.0
+
+; Move to weld start
+G1 X400.0 Y0.0 Z10.0 F6000
+
+; First weld segment
+G1 X600.0 Y0.0 Z10.0 F6000
+
+; Corner
+G1 X600.0 Y200.0 Z10.0 F5000
+
+; Return diagonal
+G1 X450.0 Y100.0 Z10.0 F5500
+
+; Retract
+G0 X450.0 Y100.0 Z150.0
+
+; Home
+G28
