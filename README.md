@@ -47,7 +47,6 @@ Output: Replicated Weld
 - **Computer Vision Weld Analysis** — Extracts weld geometry, orientation, and spatial parameters directly from images
 - **Automated URScript Generation** — Python pipeline converts extracted parameters to deployable UR robot programs without manual coding
 - **UR10e Integration** — Full compatibility with Universal Robots UR10e collaborative arm via URScript
-- **Remote Deployment** — SSH/VPN-based infrastructure for testing and deployment without direct tether
 - **Rapid Weld Replication** — Enables fast reproduction of custom welds across production runs
 
 ---
@@ -59,84 +58,7 @@ Output: Replicated Weld
 | Computer Vision | Python (OpenCV / vision pipeline) |
 | Code Generation | Python → URScript |
 | Robot Platform | Universal Robots UR10e |
-| Deployment | SSH / VPN remote infrastructure |
 | Interface | URScript (UR native programming language) |
-
----
-
-## Repository Structure
-
-```
-cobot-welding/
-├── vision/                  # Computer vision modules
-│   ├── weld_detection.py    # Weld path and geometry extraction
-│   └── spatial_analysis.py  # Spatial parameter computation
-├── codegen/                 # URScript generation
-│   ├── waypoint_gen.py      # Waypoint computation from vision output
-│   └── urscript_gen.py      # URScript synthesis and formatting
-├── deploy/                  # Deployment utilities
-│   ├── ssh_deploy.py        # Remote deployment via SSH
-│   └── config.yaml          # Connection and robot configuration
-├── tests/                   # Unit and integration tests
-├── data/                    # Sample weld images and reference paths
-│   ├── samples/
-│   └── ground_truth/
-├── docs/                    # Additional documentation
-└── README.md
-```
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- Python 3.9+
-- UR10e robot arm with network access
-- SSH/VPN access to robot network (for remote deployment)
-- OpenCV and dependencies (see `requirements.txt`)
-
-### Installation
-
-```bash
-git clone https://github.com/<your-org>/cobot-welding.git
-cd cobot-welding
-pip install -r requirements.txt
-```
-
-### Configuration
-
-Edit `deploy/config.yaml` with your robot's IP address and network credentials:
-
-```yaml
-robot:
-  ip: 192.168.x.x
-  port: 30002
-  
-deploy:
-  method: ssh      # or vpn
-  timeout: 10
-```
-
-### Usage
-
-**1. Run the full pipeline on a weld image:**
-
-```bash
-python main.py --input data/samples/weld_sample.jpg --output output/program.urscript
-```
-
-**2. Deploy to UR10e:**
-
-```bash
-python deploy/ssh_deploy.py --script output/program.urscript
-```
-
-**3. Run vision analysis only (without deployment):**
-
-```bash
-python vision/weld_detection.py --input data/samples/weld_sample.jpg --visualize
-```
 
 ---
 
@@ -167,8 +89,8 @@ Both approaches are bottlenecks at scale. This system replaces both with a visio
 
 This project is under active development as part of ongoing research at the **EMIT Lab, Carnegie Mellon University**.
 
-- [x] URScript generation pipeline
-- [x] SSH/VPN remote deployment infrastructure
+- [ ] URScript generation pipeline
+- [ ] SSH/VPN remote deployment infrastructure
 - [ ] Computer vision weld path extraction (in progress)
 - [ ] End-to-end pipeline integration
 - [ ] Validation against ground-truth weld paths
