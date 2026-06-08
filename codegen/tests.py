@@ -16,6 +16,15 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from gcode_parser import parse_gcode, WeldWaypoint, MM_TO_M
 from urscript_gen import build_urscript, _fmt_pose, _movel
 
+print('codegen/tests.py imported')
+
+def pytest_runtest_setup(item):
+    print(f"\n[pytest] START {item.name}")
+
+
+def pytest_runtest_teardown(item, nextitem):
+    print(f"[pytest] END {item.name}\n")
+
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Fixtures
@@ -55,6 +64,7 @@ def write_temp_gcode(content: str) -> Path:
     )
     f.write(content)
     f.close()
+    print(f"Created temporary G-code file: {f.name}")
     return Path(f.name)
 
 
@@ -256,11 +266,13 @@ class TestIntegration:
 
     def test_file_backend_writes_file(self):
         from urscript_gen import generate
+        print('Integration test: file backend write starting')
         path = write_temp_gcode(SIMPLE_GCODE)
         wps = parse_gcode(path)
         with tempfile.TemporaryDirectory() as tmpdir:
             out = Path(tmpdir) / "test.script"
             generate(wps, backend="file", output_path=out)
+            print(f'Wrote script to {out}')
             assert out.exists()
             content = out.read_text()
             assert "def weld_program():" in content
