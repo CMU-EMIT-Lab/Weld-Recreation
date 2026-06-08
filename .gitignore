@@ -10,3 +10,14 @@ __pycache__/
 
 # Ignore CLAUDE md
 CLAUDE.md
+
+# Cursor AI Editor
+.cursor/
+.cursorrules
+
+# Codex / Open AI configurations
+.codex/
+codex.config
+
+# Antigrav / Python easter egg files
+antigrav.py
