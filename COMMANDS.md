@@ -41,3 +41,18 @@ python codegen/main.py --input codegen/test_run.gcode --output codegen/test_run.
 - `--output` is required when using `--backend file` unless you also use `--dry-run`.
 - `--robot-ip` defaults to the value defined in `codegen/urscript_gen.py` if not provided.
 - The command above assumes you are running from the repository root.
+
+## Regenerate all demo and test script files
+
+To regenerate all four `.script` files in the workspace at once, execute the following command:
+
+### Windows (PowerShell)
+```powershell
+python codegen/main.py -i codegen/test_run.gcode -o codegen/test_run.script -n weld_program; python codegen/main.py -i codegen/demo_gcode/linear_multi_pass.gcode -o codegen/demo_gcode/linear_multi_pass.script -n linear_multi_pass; python codegen/main.py -i codegen/demo_gcode/box_weld.gcode -o codegen/demo_gcode/box_weld.script -n box_weld; python codegen/main.py -i codegen/demo_gcode/weave_weld.gcode -o codegen/demo_gcode/weave_weld.script -n weave_weld
+```
+
+### Linux / macOS (Bash)
+```bash
+python codegen/main.py -i codegen/test_run.gcode -o codegen/test_run.script -n weld_program && python codegen/main.py -i codegen/demo_gcode/linear_multi_pass.gcode -o codegen/demo_gcode/linear_multi_pass.script -n linear_multi_pass && python codegen/main.py -i codegen/demo_gcode/box_weld.gcode -o codegen/demo_gcode/box_weld.script -n box_weld && python codegen/main.py -i codegen/demo_gcode/weave_weld.gcode -o codegen/demo_gcode/weave_weld.script -n weave_weld
+```
+
