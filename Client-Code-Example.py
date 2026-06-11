@@ -31,7 +31,7 @@ def send_urscript_command(command: str):
     try:
         # Create a socket connection with the robot IP and port number defined above
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect((robotIP, PRIMARY_PORT))
+        s.connect((robotIP, SECONDARY_PORT))
 
         # Appends new line to the URScript command (the command will not execute without this)
         command = command + new_line
@@ -45,4 +45,12 @@ def send_urscript_command(command: str):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-send_urscript_command(urscript_command)
+def send_script_file(file_path: str):
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            send_urscript_command(file.read())
+    except FileNotFoundError:
+        print(f"Error: The file '{file_path}' was not found.")
+        return
+
+send_script_file("codegen/demo_gcode/box_weld.script")
