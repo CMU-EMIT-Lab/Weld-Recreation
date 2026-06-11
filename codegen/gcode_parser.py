@@ -36,7 +36,7 @@ logger = logging.getLogger(__name__)
 # Axis-angle: [Rx, Ry, Rz] in radians
 # Adjust to match your TCP / fixture setup.
 # ──────────────────────────────────────────────
-DEFAULT_ORIENTATION_RAD = [-math.pi, -math.pi, 0.0]  # torch pointing -Z (down)
+DEFAULT_ORIENTATION_RAD = [0.0, 0.0, 0.0]  # torch pointing -Z (down)
 
 MM_TO_M = 1e-3
 MM_PER_MIN_TO_M_PER_S = 1.0 / 60000.0  # mm/min → m/s
