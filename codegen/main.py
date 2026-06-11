@@ -60,7 +60,7 @@ def main():
         help=f"UR10e IP address for socket backend (default: {DEFAULT_ROBOT_IP})",
     )
     parser.add_argument(
-        "--name", default="weld_program",
+        "--name", "-n", default="weld_program",
         help="URScript program name (def block name)",
     )
     parser.add_argument(
