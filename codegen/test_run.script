@@ -6,7 +6,7 @@ def weld_program():
   # ── Safety init ──────────────────────────────────────────
   set_digital_out(0, False)  # ensure torch off
   set_target_payload(3.6, [0.0360, -0.0800, 0.0600])
-  set_tcp(p[0.0022, 0.0027, 0.4523, 0.8534, -2.5181, 1.1027])
+  set_tcp(p[0.0022, 0.0027, 0.4523, 0.8534, 0.5181, 1.1027])
   sleep(0.1)
 
   # ── Approach (joint-space to avoid singularities) ─────────
@@ -31,3 +31,4 @@ def weld_program():
   movej(p[0.450000, 0.100000, 0.340000, 3.141593, 0.000000, 0.000000], a=1.0000, v=0.5000, r=0.0000)
 
 end
+weld_program()
