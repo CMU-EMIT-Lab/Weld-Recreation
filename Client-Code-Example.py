@@ -3,7 +3,10 @@ from dotenv import load_dotenv
 import socket
 
 # initialize variables
+load_dotenv()
 robotIP = os.getenv("ROBOT-IP")
+if not robotIP:
+    raise ValueError("ROBOT-IP is not set in the environment or .env file")
 PRIMARY_PORT = 30001
 SECONDARY_PORT = 30002
 REALTIME_PORT = 30003
@@ -46,11 +49,11 @@ def send_urscript_command(command: str):
         print(f"An error occurred: {e}")
 
 def send_script_file(file_path: str):
-    try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            send_urscript_command(file.read())
-    except FileNotFoundError:
-        print(f"Error: The file '{file_path}' was not found.")
-        return
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            send_urscript_command(file.read())
+    except FileNotFoundError:
+        print(f"Error: The file '{file_path}' was not found.")
+        return
 
 send_script_file("codegen/demo_gcode/box_weld.script")
