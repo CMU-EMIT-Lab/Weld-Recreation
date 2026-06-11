@@ -5,8 +5,8 @@ def weld_program():
 
   # ── Safety init ──────────────────────────────────────────
   set_digital_out(0, False)  # ensure torch off
-  set_target_payload(7.0, [0.0000, 0.0000, 0.0000])
-  set_tcp(p[0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000])
+  set_target_payload(3.6, [0.0360, -0.0800, 0.0600])
+  set_tcp(p[0.0022, 0.0027, 0.4523, 0.8534, -2.5181, 1.1027])
   sleep(0.1)
 
   # ── Approach (joint-space to avoid singularities) ─────────
