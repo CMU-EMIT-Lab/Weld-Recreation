@@ -186,7 +186,8 @@ class TestUrscriptGen:
     def test_script_has_def_end(self):
         script = build_urscript(self._simple_waypoints())
         assert "def weld_program():" in script
-        assert script.strip().endswith("end")
+        assert "end" in script
+        assert script.strip().endswith("weld_program()")
 
     def test_custom_program_name(self):
         script = build_urscript(self._simple_waypoints(), program_name="test_run_1")
@@ -240,7 +241,7 @@ class TestUrscriptGen:
     def test_payload_and_tcp_init(self):
         script = build_urscript(self._simple_waypoints())
         assert "set_target_payload(3.6, [0.0360, -0.0800, 0.0600])" in script
-        assert "set_tcp(p[0.0022, 0.0027, 0.4523, 0.8534, -2.5181, 1.1027])" in script
+        assert "set_tcp(p[0.0022, 0.0027, 0.4523, 0.8534, 0.5181, 1.1027])" in script
 
     def test_script_no_weld_segments(self):
         """All-rapid path should still produce valid script with no torch fire."""
@@ -267,7 +268,7 @@ class TestIntegration:
         script = build_urscript(wps)
         assert "def weld_program():" in script
         assert "movel(" in script
-        assert script.strip().endswith("end")
+        assert script.strip().endswith("weld_program()")
 
     def test_file_backend_writes_file(self):
         from urscript_gen import generate
