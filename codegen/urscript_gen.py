@@ -78,7 +78,7 @@ URSCRIPT_PORT = 30002   # Secondary interface — accepts full URScript programs
 # Default Payload and TCP configurations
 DEFAULT_PAYLOAD_MASS = 3.58               # kg
 DEFAULT_PAYLOAD_COG = [0.036, -0.080, 0.060]    # [CoGx, CoGy, CoGz] in meters offset from tool mount
-DEFAULT_TCP_POSE = [0.00225, 0.00271, 0.45227, 0.8534, -2.5181, 1.1027]  # 0 equivalent tool center point
+DEFAULT_TCP_POSE = [0.00225, 0.00271, 0.45227, 0.8534, 0.5181, 1.1027]  # 0 equivalent tool center point
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -220,6 +220,7 @@ def build_urscript(
     ]
 
     lines.append("end")
+    lines.append(f'{program_name}()')
 
     return "\n".join(lines)
 
