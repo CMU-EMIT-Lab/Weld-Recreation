@@ -10,7 +10,7 @@ REALTIME_PORT = 30003
 
 # URScript command being sent to the robot
 # urscript_command = "set_digital_out(1, True)"
-urscript_command = "movej([1.57, -1.57, 1.57, -1.57, 1.57, 0], a=1.4, v=1.05)"
+urscript_command = "movel(p[0.400000, 0.000000, 0.010000, 3.141593, 0.000000, 0.000000], a=0.3000, v=0.0200, r=0.0020)"
 # urscript_command = "movel(p[0.2, 0.4, 0.3, 0, 3.14, 0], a=1.2, v=0.25)"
 
 # Creates new line

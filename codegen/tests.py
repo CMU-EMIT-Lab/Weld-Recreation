@@ -237,6 +237,11 @@ class TestUrscriptGen:
         snippet = script[first_digital:first_digital + 60]
         assert "False" in snippet
 
+    def test_payload_and_tcp_init(self):
+        script = build_urscript(self._simple_waypoints())
+        assert "set_target_payload(7.0, [0.0000, 0.0000, 0.0000])" in script
+        assert "set_tcp(p[0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000])" in script
+
     def test_script_no_weld_segments(self):
         """All-rapid path should still produce valid script with no torch fire."""
         wps = [
